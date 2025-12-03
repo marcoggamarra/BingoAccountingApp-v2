@@ -21,9 +21,11 @@ All tunables live in `config.c` / `config.h` and are accessed via getters/setter
 | Multi winners | 1 | Normal matches can have >1 winner. |
 
 ## Validation
+
 Call `cfg_validate()` to confirm ranges before starting a session.
 
 ## Strategy Notes
+
 - Higher saved percentage increases Full House payout but reduces regular match winner returns.
 - Setting Full House card cost high creates its own pot in addition to saved pot.
 - Disabling multi winners increases variance (only one winner receives distributable).

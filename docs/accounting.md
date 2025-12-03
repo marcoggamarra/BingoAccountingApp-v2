@@ -43,13 +43,14 @@ Given all payouts come from pots built by spending or saved pot accumulation, mo
 
 ## Edge Cases
 
-- No winners: Distributable not paid; participants record losses; money stays in the saved portion? (Current logic: if winner_count==0, no payout and saved portion still reserved. This can grow funds; you may add a rule to mark draws or refund.)
-- Multiple winners disabled: Only first winner rewarded; others ignored until enabled.
-- Full House with zero winners: Currently no payout and saved pot remains; consider enforcing at least one winner before ending.
+- End requires at least one winner: You cannot end a match if there are participants but zero winners. Add at least one winner before ending (applies to Normal and Full House).
+- Multiple winners disabled: If multi-winner is toggled off, only the first declared winner is rewarded; additional winners are rejected until re-enabled.
+- Full House with zero winners: Not allowed; same enforcement as above. Saved pot is only paid out when the match ends with at least one winner.
 
 ## Recommended Integrity Checks
 
 Implement periodic audit:
+
 1. Compute expected sum = Σ(total_recharged) - Σ(total_spent) + Σ(total_won).
 2. Compare with Σ(balance_i). They should match unless a match is active or saved pot is pending payout. Add saved_pot and active match pot to reconcile.
 
