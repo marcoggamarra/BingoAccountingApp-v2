@@ -1,0 +1,22 @@
+# Build / IDE
+bin/
+build/
+*.exe
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.dylib
+.vscode/
+*.swp
+*.swo
+*~
+
+# Persistent data
+data/
+
+# OS
+Thumbs.db
+.DS_Store
+*.log
